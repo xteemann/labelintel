@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Theme ─────────────────────────────────────────────────── */
+:root {
+  --bg-primary: #0A0A0F;
+  --bg-card: #12121A;
+  --bg-card-hover: #1A1A25;
+  --border-subtle: #1E1E2A;
+  --blue-accent: #3B82F6;
+  --blue-glow: rgba(59, 130, 246, 0.15);
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Glass Card ─────────────────────────────────────────────────── */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(18, 18, 26, 0.8) 0%,
+    rgba(18, 18, 26, 0.4) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.glass-card-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ── Gradient Text ──────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #3B82F6 50%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Animated Background Grid ───────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Hero Glow ──────────────────────────────────────────────────── */
+.hero-glow {
+  position: relative;
+}
+
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.12) 0%,
+    rgba(139, 92, 246, 0.06) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Score Bar ──────────────────────────────────────────────────── */
+.score-bar {
+  background: linear-gradient(90deg, #3B82F6 0%, #8B5CF6 50%, #10B981 100%);
+  border-radius: 4px;
+  height: 4px;
+  transition: width 1s ease-out;
+}
+
+/* ── Mini Chart (CSS-only) ──────────────────────────────────────── */
+.mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 32px;
+}
+
+.mini-chart .bar {
+  width: 4px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to top, #3B82F6, #60A5FA);
+  transition: height 0.5s ease;
+}
+
+/* ── Pricing Card Glow ──────────────────────────────────────────── */
+.pricing-popular {
+  position: relative;
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.pricing-popular::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── FAQ Accordion ──────────────────────────────────────────────── */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-content.open {
+  max-height: 500px;
+}
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E1E2A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2A2A3A;
+}
+
+/* ── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* ── Button Styles ──────────────────────────────────────────────── */
+.btn-primary {
+  @apply bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold
+         px-6 py-3 rounded-lg transition-all duration-200
+         shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/30
+         active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-brand-border hover:border-brand-blue/50
+         text-white font-medium px-6 py-3 rounded-lg transition-all duration-200
+         hover:bg-brand-blue/5;
+}
+
+/* ── Section Spacing ────────────────────────────────────────────── */
+.section-padding {
+  @apply py-20 md:py-28 px-4 sm:px-6 lg:px-8;
+}
+
+.container-tight {
+  @apply max-w-6xl mx-auto;
+}
