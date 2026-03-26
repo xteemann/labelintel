@@ -182,7 +182,10 @@ export default function SampleReport() {
           <div className="mt-6 pt-4 border-t border-brand-border text-center">
             <p className="text-sm text-brand-muted">
               Showing 5 of 50 artists ·{' '}
-              <span className="text-brand-blue cursor-pointer hover:underline">
+              <span
+                className="text-brand-blue cursor-pointer hover:underline"
+                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Get the full report →
               </span>
             </p>
