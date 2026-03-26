@@ -183,6 +183,26 @@ body {
   color: white;
 }
 
+/* ── Mobile Touch Targets ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Make span-based clickable elements obvious on mobile */
+  span[onClick], .cursor-pointer {
+    padding: 8px;
+    border-radius: 6px;
+    color: #60A5FA;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 /* ── Button Styles ──────────────────────────────────────────────── */
 .btn-primary {
   @apply bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold
